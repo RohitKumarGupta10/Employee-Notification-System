@@ -54,7 +54,14 @@
                 method: 'POST',
                 body: new URLSearchParams(new FormData(form))
             })
-            .then(res => res.ok ? loadNotifications() : alert('Error saving notification'))
+            .then(res => {
+                if (res.ok) {
+                    loadNotifications();
+                    alert('Notification sent successfully!');
+                } else {
+                    alert('Error saving notification');
+                }
+            })
             .finally(() => form.reset());
         };
 
