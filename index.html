@@ -31,6 +31,10 @@
                     <option>Student Representatives</option>
                 </select>
             </label>
+            <label>
+                Recipient Email
+                <input type="email" id="recipientEmail" name="recipientEmail" required>
+            </label>
             <button type="submit">Send Notification</button>
         </form>
 
@@ -59,7 +63,7 @@
                     loadNotifications();
                     alert('Notification sent successfully!');
                 } else {
-                    alert('Error saving notification');
+                    alert('Error sending notification');
                 }
             })
             .finally(() => form.reset());
