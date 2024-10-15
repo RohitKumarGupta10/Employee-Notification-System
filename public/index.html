@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Notification System</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function sendNotification(event) {
+            event.preventDefault(); // Stop form from submitting
+            alert('Notification sent successfully!');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Employee Notification System</h1>
-        <form id="notificationForm">
+        <form id="notificationForm" onsubmit="sendNotification(event)">
             <label>
                 Notification Title
                 <input type="text" id="title" name="title" required>
@@ -23,7 +29,7 @@
                 <select id="department" name="department">
                     <option>All</option>
                     <option>Chancellor/Vice-Chancellor</option>
-                    <option>Deans</option>
+                    <option>Dean</option>
                     <option>Faculty Members</option>
                     <option>Lab Instructors/Technicians</option>
                     <option>Administrative Staff</option>
