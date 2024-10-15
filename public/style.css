@@ -46,10 +46,11 @@ textarea {
     resize: vertical;
 }
 
+/* Updated button styles */
 button {
     display: inline-block;
     padding: 12px 24px;
-    background: linear-gradient(to right, #32a852, #28a745);
+    background: linear-gradient(to right, #006400, #004d00); /* Darker green gradient */
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -57,16 +58,17 @@ button {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 4px 15px rgba(50, 168, 82, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 100, 0, 0.3); /* Updated shadow to match dark green */
     position: relative;
     overflow: hidden;
-    margin-top: 15px; /* Added margin-top */
-    width: 100%; /* Adjust the width */
+    margin-top: 15px;
+    width: 100%;
     text-align: center;
 }
 
-
-
+button:hover {
+    background: linear-gradient(to right, #004d00, #003300); /* Even darker on hover */
+}
 
 .notification-list {
     margin-top: 20px;
@@ -96,7 +98,7 @@ button {
 
 #showHistoryBtn {
     margin-top: 20px;
-    margin-bottom: 20px; /* Added margin-bottom */
+    margin-bottom: 20px;
 }
 
 #notificationHistory {
