@@ -45,52 +45,5 @@
             <div id="notificationList"></div>
         </div>
     </div>
-
-    <script>
-        const form = document.getElementById('notificationForm');
-        const notificationList = document.getElementById('notificationList');
-        const showHistoryBtn = document.getElementById('showHistoryBtn');
-        const notificationHistory = document.getElementById('notificationHistory');
-
-        form.onsubmit = function (e) {
-            e.preventDefault();
-            fetch('/save-notification', {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(form))
-            })
-            .then(res => {
-                if (res.ok) {
-                    loadNotifications();
-                    alert('Notification sent successfully!');
-                } else {
-                    alert('Error sending notification');
-                }
-            })
-            .finally(() => form.reset());
-        };
-
-        function loadNotifications() {
-            fetch('/notifications')
-                .then(res => res.json())
-                .then(notifications => {
-                    notificationList.innerHTML = notifications.map(n => `
-                        <div class="notification-item">
-                            <h3>${n.title}</h3>
-                            <p>${n.message}</p>
-                            <small>Recipient: ${n.recipientDepartment} | Sent at: ${new Date(n.createdAt).toLocaleString()}</small>
-                        </div>
-                    `).join('');
-                });
-        }
-
-        showHistoryBtn.onclick = function() {
-            notificationHistory.style.display = notificationHistory.style.display === 'none' ? 'block' : 'none';
-            if (notificationHistory.style.display === 'block') {
-                loadNotifications();
-            }
-        };
-
-        loadNotifications();
-    </script>
 </body>
 </html>
