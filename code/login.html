@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function login(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const validEmails = [
+                'chancellorsoe@gmail.com', 'deansoe@gmail.com', 'faculty1soe@gmail.com', 
+                'faculty2soe@gmail.com', 'faculty3soe@gmail.com', 'faculty4soe@gmail.com', 
+                'faculty5soe@gmail.com', 'faculty6soe@gmail.com', 'faculty7soe@gmail.com', 
+                'faculty8soe@gmail.com', 'faculty9soe@gmail.com', 'faculty10soe@gmail.com', 
+                'labsoe@gmail.com', 'adminsoe@gmail.com', 'librarysoe@gmail.com', 'studentsoe@gmail.com'
+            ];
+
+            if (validEmails.includes(email) && password === 'password') {
+                localStorage.setItem('user', email);
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid email or password! Please try again.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm" onsubmit="login(event)">
+            <label>Email
+                <input type="email" id="email" name="email" required>
+            </label>
+            <label>Password
+                <input type="password" id="password" name="password" required>
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
