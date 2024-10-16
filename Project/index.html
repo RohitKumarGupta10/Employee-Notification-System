@@ -37,4 +37,14 @@
       </div>
     </section>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger-menu");
+      const navList = document.getElementById("nav-list");
+
+      hamburger.addEventListener("click", () => {
+        navList.classList.toggle("active");
+      });
+    });
+  </script>
 </html>
