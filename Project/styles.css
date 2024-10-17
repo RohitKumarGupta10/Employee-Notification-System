@@ -63,7 +63,7 @@ button {
 
 .nav-item a:hover {
   background-color: white;
-  color: #0052b1; /* Same as gradient */
+  color: #000000;
   transform: scale(1.1);
 }
 
