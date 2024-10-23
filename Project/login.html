@@ -12,25 +12,22 @@
         const password = document.getElementById("password").value;
 
         const validEmails = [
-          "chancellorsoe@gmail.com",
+          "vicechancellorsoe@gmail.com",
           "deansoe@gmail.com",
           "faculty1soe@gmail.com",
           "faculty2soe@gmail.com",
           "faculty3soe@gmail.com",
           "faculty4soe@gmail.com",
           "faculty5soe@gmail.com",
-          "faculty6soe@gmail.com",
-          "faculty7soe@gmail.com",
-          "faculty8soe@gmail.com",
-          "faculty9soe@gmail.com",
-          "faculty10soe@gmail.com",
           "labsoe@gmail.com",
           "adminsoe@gmail.com",
           "librarysoe@gmail.com",
           "studentsoe@gmail.com",
+          "placementsoe@gmail.com",
+          "rndsoe@gmail.com",
         ];
 
-        if (validEmails.includes(email) && password === "password") {
+        if (validEmails.includes(email) && password === "1234") {
           localStorage.setItem("user", email);
           window.location.href = "welcome.html";
         } else {
