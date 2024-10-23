@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADYPU Notify Report</title>
+    <link rel="stylesheet" href="report.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">ADYPU Notify</a>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item">
+            <a href="index.html" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content Section -->
+    <div class="container">
+      <h1>Notifications Report</h1>
+
+      <button id="downloadBtn" onclick="downloadReport()">
+        Download Report
+      </button>
+    </div>
+
+    <script>
+      function downloadReport() {
+        const notifications =
+          JSON.parse(localStorage.getItem("notifications")) || [];
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Title,Message,Department,CC,BCC\n"; // CSV Header
+
+        notifications.forEach((notification) => {
+          const row = [
+            notification.title,
+            notification.message,
+            notification.department,
+            notification.cc || "",
+            notification.bcc || "",
+          ].join(","); // Convert each notification object into a CSV row
+          csvContent += row + "\n"; // Append the row to the CSV content
+        });
+
+        if (notifications.length === 0) {
+          alert("No notifications to download.");
+          return; // Exit if there are no notifications
+        }
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "notifications_report.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click(); // This will download the CSV file
+        document.body.removeChild(link); // Clean up the link element
+      }
+
+      function logout() {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+      }
+
+      function toggleMenu() {
+        const navList = document.querySelector(".nav-list");
+        navList.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
