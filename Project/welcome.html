@@ -5,56 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Notification System</title>
     <link rel="stylesheet" href="style.css" />
-    <script>
-      function sendNotification(event) {
-        event.preventDefault();
-        alert("Notification sent successfully!");
-        window.location.href = "index.html";
-      }
-    </script>
   </head>
   <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">ADYPU Notify</a>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item">
+            <a href="login.html" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content Section -->
     <div class="container">
-      <h1>Employee Notification System</h1>
+      <h1>Welcome, Employee!</h1>
+
+      <!-- Notification Form -->
       <form id="notificationForm" onsubmit="sendNotification(event)">
         <label
           >Notification Title
           <input type="text" id="title" name="title" required />
         </label>
+
         <label
           >Message
           <textarea id="message" name="message" rows="4" required></textarea>
         </label>
+
         <label
           >Recipient Department
           <select id="department" name="department">
-            <option>All</option>
-            <option>Chancellor/Vice-Chancellor</option>
+            <option>Vice Chancellor</option>
             <option>Dean</option>
             <option>Faculty Members</option>
-            <option>Lab Instructors/Technicians</option>
             <option>Administrative Staff</option>
+            <option>Technicians</option>
+            <option>Placement Department</option>
+            <option>Research and Development Department</option>
             <option>Library Staff</option>
             <option>Student Representatives</option>
           </select>
         </label>
+
         <label
-          >Recipient Email
-          <input
-            type="email"
-            id="recipientEmail"
-            name="recipientEmail"
-            required
-          />
+          >CC
+          <input type="email" id="recipientCc" name="recipientCc" />
         </label>
+
+        <label
+          >BCC
+          <input type="email" id="recipientBcc" name="recipientBcc" />
+        </label>
+
+        <label
+          >Upload Attachment
+          <input type="file" id="attachment" name="attachment" />
+        </label>
+
         <button type="submit">Send Notification</button>
       </form>
-      <button class="logout" onclick="logout()">Logout</button>
     </div>
+
     <script>
+      function sendNotification(event) {
+        event.preventDefault();
+        alert("Notification sent successfully!");
+        document.getElementById("notificationForm").reset();
+      }
+
       function logout() {
         localStorage.removeItem("user");
         window.location.href = "login.html";
+      }
+
+      function toggleMenu() {
+        const navList = document.querySelector(".nav-list");
+        navList.classList.toggle("active");
       }
     </script>
   </body>
